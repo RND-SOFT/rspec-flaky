@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'rspec/flaky/cli'
+
+Flaky::CLI.new.run(ARGV)
