@@ -7,7 +7,8 @@ module Config
 
   def self.config
     @config ||= ::OpenStruct.new({
-      with_default_output:  true
+      with_default_output: true,
+      default_iterations: 1
     })
   end
 end

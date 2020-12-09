@@ -3,14 +3,20 @@ require 'rspec/flaky/dumper/json'
 require 'rspec/flaky/dumper/db'
 
 RSpec.configure do |config|
-  config.after(:each) do |example|
-    return unless example.metadata[:tables].present?
-    
-    location = example.metadata[:location].gsub('/', '_')
-    status = example.exception.nil? ? 'passed' : 'failed'
-    tables = Array.wrap(example.metadata[:tables])
+  if ENV["FLAKY_SPEC"] == "1"
+    config.before(:suite, table: true) do
+      config.after(:each, tables: true) do |example|
+        location = example.metadata[:location].gsub('/', ':')
+        status = example.exception.nil? ? 'passed' : 'failed'
+        tables = Array.wrap(example.metadata[:tables])
 
-    Dumper::Json.new.dump!(location, status, tables)
-    Dumper::Db.new.dump!(location, status, tables)
+        Dumper::Json.new.dump!(location, status, tables)
+        Dumper::Db.new.dump!(location, status, tables)
+      end
+
+      config.before(:each, tables: true) do
+        DatabaseCleaner.strategy = :truncation
+      end
+    end
   end
 end

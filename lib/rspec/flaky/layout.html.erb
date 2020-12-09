@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='<%= File.join("./stylesheets/application.css") %>' media='screen, projection, print' rel='stylesheet' type='text/css' />
+  <title>Flaky Result</title>
+</head>
+<body>
+  <% @diffs.each do |diffs| -%>
+    <div class="example">
+      <h2>Location: <%= diffs[:location] -%></h2>
+      <h2>Table: <%= diffs[:table] %></h2>
+      <% if diffs[:result] == "no_content" -%>
+        <%= "There were no failed and passed tests during the testing process. Try to increase the number of iterations." %>
+      <% else -%>
+        <p>Diffs:</p>
+        <% diffs[:result].each do |diff| -%>
+          <div class="result-table">
+            <table>
+              <thead>
+                <th>
+                  Attribute
+                </th>
+                <th>
+                  Passed value
+                </th>
+                <th>
+                  Failed value
+                </th>
+              </thead>
+              <tbody>
+                <% diff.each do |attribute| -%>
+                  <tr>
+                    <td>
+                      <span><%= attribute[1] || "Record"%></span>
+                    </td>
+                    <td class="passed">
+                      <span><pre><%= prettify attribute[2]%></pre></span>
+                    </td>
+                    <td class="failed">
+                      <span><pre><%= prettify attribute[3]%></pre></span>
+                    </td>
+                  </tr>
+                <% end -%>
+              </tbody>
+            </table>
+          </div>
+        <% end -%>
+      <% end -%>
+    </div>
+  <%end -%>
+</body>
+</html>

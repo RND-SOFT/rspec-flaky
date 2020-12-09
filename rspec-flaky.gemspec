@@ -23,5 +23,7 @@ Gem::Specification.new 'rspec-flaky' do |spec|
   spec.executables   = 'rspec-flaky'
 
   spec.require_paths = ['lib']
+
+  spec.add_runtime_dependency 'hashdiff', '~> 1.0.1'
 end
 

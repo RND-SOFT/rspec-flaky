@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rspec-flaky.gemspec
+# Specify your gem's dependencies in parser.gemspec
 gemspec
