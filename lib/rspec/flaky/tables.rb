@@ -8,7 +8,7 @@ RSpec.configure do |config|
       config.after(:each, tables: true) do |example|
         location = example.metadata[:location].gsub('/', ':')
         status = example.exception.nil? ? 'passed' : 'failed'
-        tables = Array.wrap(example.metadata[:tables])
+        tables = Array.wrap(example.metadata[:tables].select{|t| t < ApplicationRecord})
 
         Dumper::Json.new.dump!(location, status, tables)
         Dumper::Db.new.dump!(location, status, tables)

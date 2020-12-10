@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='<%= File.join("./stylesheets/application.css") %>' media='screen, projection, print' rel='stylesheet' type='text/css' />
+  <link href="application.css" rel='stylesheet' type='text/css' />
   <title>Flaky Result</title>
 </head>
 <body>
@@ -16,11 +16,11 @@
       <% else -%>
         <p>Diffs:</p>
         <% diffs[:result].each do |diff| -%>
-          <div class="result-table">
-            <table>
+          <div>
+            <table class="pure-table">
               <thead>
                 <th>
-                  Attribute
+                  <%=diffs[:table]%>'s Attribute
                 </th>
                 <th>
                   Passed value
@@ -35,10 +35,10 @@
                     <td>
                       <span><%= attribute[1] || "Record"%></span>
                     </td>
-                    <td class="passed">
+                    <td style="background-color: lightgreen">
                       <span><pre><%= prettify attribute[2]%></pre></span>
                     </td>
-                    <td class="failed">
+                    <td style="background-color: rosybrown">
                       <span><pre><%= prettify attribute[3]%></pre></span>
                     </td>
                   </tr>

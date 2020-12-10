@@ -11,7 +11,7 @@ Gem::Specification.new 'rspec-flaky' do |spec|
 
   spec.license     = 'MIT'
 
-  spec.files       = Dir['{lib}/**/*', "{bin}/*", 'README.md', 'LICENSE"'].reject do |f|
+  spec.files       = Dir['{lib}/**/*', "{bin}/*", "{assets}/*", 'README.md', 'LICENSE"'].reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
 
