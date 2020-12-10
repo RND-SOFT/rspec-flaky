@@ -8,18 +8,14 @@ module Drawer
       File.open(Pathes.summary_path.join('result.html'), 'w') do |f|
         f.write(result)
       end
-      copy_styles
     end
 
     def prettify(data)
-      return 'No data' if data.nil?
+      return '-' if data.nil?
       return JSON.pretty_generate(data) if data.is_a? Hash
       data
     end
 
-    def copy_styles
-      FileUtils.cp Pathes.assets_path.join('application.css'), Pathes.summary_path
-    end
   end
 
 end

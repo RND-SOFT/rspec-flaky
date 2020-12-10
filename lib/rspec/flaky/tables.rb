@@ -10,8 +10,8 @@ RSpec.configure do |config|
         status = example.exception.nil? ? 'passed' : 'failed'
         tables = Array.wrap(example.metadata[:tables].select{|t| t < ApplicationRecord})
 
-        Dumper::Json.new.dump!(location, status, tables)
-        Dumper::Db.new.dump!(location, status, tables)
+        Dumper::Json.new.dump!(location, status, tables) 
+        Dumper::Db.new.dump!(location, status) 
       end
 
       config.before(:each, tables: true) do

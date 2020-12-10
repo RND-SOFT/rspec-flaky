@@ -5,6 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="application.css" rel='stylesheet' type='text/css' />
   <title>Flaky Result</title>
+  <style>
+    html {
+      line-height: 1.15;
+    }
+
+    body {
+      margin: auto;
+      width: 80%;
+    }
+
+
+    h1 {
+      font-size: 2em;
+      margin: .67em 0
+    }
+
+    pre {
+      font-family: monospace, monospace;
+      font-size: 1em
+    }
+
+    html {
+      font-family: sans-serif
+    }
+
+    .pure-table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      empty-cells: show;
+      border: 1px solid #cbcbcb
+    }
+
+    table {
+      table-layout: fixed; 
+      width: 100%
+    }
+
+    .pure-table caption {
+      color: #000;
+      font: italic 85%/1 arial, sans-serif;
+      padding: 1em 0;
+      text-align: center
+    }
+
+    .pure-table td,
+    .pure-table th {
+      border-left: 1px solid #cbcbcb;
+      border-width: 0 0 0 1px;
+      font-size: inherit;
+      margin: 0;
+      overflow: visible;
+      padding: .5em 1em
+    }
+
+    .pure-table thead {
+      background-color: #e0e0e0;
+      color: #000;
+      text-align: left;
+      vertical-align: bottom
+    }
+
+    .pure-table td {
+      background-color: transparent;
+      max-width: 600px;
+      overflow: hidden;
+    }
+
+    .pure-table-odd td {
+      background-color: #f2f2f2
+    }
+
+    .pure-table-striped tr:nth-child(2n-1) td {
+      background-color: #f2f2f2
+    }
+
+    .pure-table-bordered td {
+      border-bottom: 1px solid #cbcbcb
+    }
+
+    .pure-table-bordered tbody>tr:last-child>td {
+      border-bottom-width: 0
+    }
+
+    .pure-table-horizontal td,
+    .pure-table-horizontal th {
+      border-width: 0 0 1px 0;
+      border-bottom: 1px solid #cbcbcb
+    }
+
+    .pure-table-horizontal tbody>tr:last-child>td {
+      border-bottom-width: 0
+    }
+  </style>
 </head>
 <body>
   <% @diffs.each do |diffs| -%>
@@ -12,8 +105,10 @@
       <h2>Location: <%= diffs[:location] -%></h2>
       <h2>Table: <%= diffs[:table] %></h2>
       <% if diffs[:result] == "no_content" -%>
-        <%= "There were no failed and passed tests during the testing process. Try to increase the number of iterations." %>
-      <% else -%>
+        There were no failed and passed tests during the testing process. Try to increase the number of iterations
+      <% elsif diffs[:result] == "empty_table" -%>
+        Table is empty
+      <% else -%>      
         <p>Diffs:</p>
         <% diffs[:result].each do |diff| -%>
           <div>
