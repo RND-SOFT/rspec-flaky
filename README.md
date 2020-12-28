@@ -26,7 +26,11 @@ Select the model whose attributes will be dumped:
 
 Run the command to iteratively run flaky example:
 
-    rspec-flaky path/to/flaky_spec.rb:12 -i 10
+    rspec-flaky path/to/flaky_spec.rb:12 -i 10 -j -d
+
+    -i - iterations number
+    -j - save pointed model attributes to tmp/flaky_tests/.:flaky_spec:12 as json
+    -d - save database dump after each example to tmp/flaky_tests/database_dumps/.:flaky_spec:12 as sql file
 
 If at least one example is failed you can compare pointed model's attributes dumped to tmp/flaky_test folder.
 
