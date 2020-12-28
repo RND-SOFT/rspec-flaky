@@ -22,7 +22,7 @@ module Flaky
   
     def get_location(argv)
       first_arg = argv.shift
-      raise 'You need to specify location first' unless Pathname.new(first_arg).exist?
+      raise 'You need to specify location first' unless Pathname.new(first_arg.split(":").first).exist?
       return first_arg
     end
 
