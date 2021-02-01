@@ -5,7 +5,7 @@ module Flaky
   class CLI
 
     DEFAULT_OPTIONS = {
-      iterations: 1,
+      iterations: 10,
       silent: false,
       save_jsons: false,
       dump_db: false

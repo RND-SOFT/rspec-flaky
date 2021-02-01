@@ -1,6 +1,9 @@
 # RSpecFlaky
 
-TODO: Write a gem description
+The most common reason for test flakiness is randomized factories which fill a database before test execution. This small gem is designed to help you find out what exactly attribute values were assigned to an investigated model during a failed and passed execution.
+
+![image](https://user-images.githubusercontent.com/43433100/106516737-8e72a380-64e8-11eb-9758-34e5cb9f278b.png)
+
 
 ## Installation
 
@@ -12,27 +15,35 @@ Install the gem:
 
     $ bundle
 
-And then add this line to your spec/spec_helper.rb:
-
-    require 'rspec/flaky'
-
-Select the model whose attributes will be dumped:
+That's all. Select the model whose attributes will be dumped:
 
     it 'is flaky test', tables: [User, Post] do
         expect([true, false]).to be true
     end
-
 ## Usage
 
-Run the command to iteratively run flaky example:
+Run the command to iteratively run flaky example (option `-i` specifies the number of iterations):
 
-    rspec-flaky path/to/flaky_spec.rb:12 -i 10 -j -d
+    rspec-flaky path/to/flaky_spec.rb:12 -i 5 
 
-    -i - iterations number
-    -j - save pointed model attributes to tmp/flaky_tests/.:flaky_spec:12 as json
-    -d - save database dump after each example to tmp/flaky_tests/database_dumps/.:flaky_spec:12 as sql file
+If at least one example is failed gem will generate tables where you are able to investigate source of flakiness by comparing failed and success attribute values. After running your tests, open `tmp/flaky_tests/result.html` in the browser of your choice. For example, in a Mac Terminal, run the following command from your application's root directory:
 
-If at least one example is failed you can compare pointed model's attributes dumped to tmp/flaky_test folder.
+   ```
+   open tmp/flaky_tests/result.html
+   ```
+   in a debian/ubuntu Terminal,
+
+   ```
+   xdg-open tmp/flaky_tests/result.html
+   ```
+
+   **Note:** [This guide](https://dwheeler.com/essays/open-files-urls.html) can help if you're unsure which command your particular
+   operating system requires.
+
+
+It's also possible to dump the whole database per each test example if there was a failed result as well as a passed result. For that just add `-d` option (currently only PostresQL is available):
+    
+    rspec-flaky path/to/flaky_speЗc.rb:12 -i 10 -d
 
 ## Contributing
 
