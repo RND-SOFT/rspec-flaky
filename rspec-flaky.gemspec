@@ -5,7 +5,7 @@ Gem::Specification.new 'rspec-flaky' do |spec|
   spec.version     = RSpecFlaky::VERSION
   spec.authors     = ['maratz']
   spec.email       = ['mzasorinwd@gmail.com']
-  spec.homepage    = 'https://github.com/mzsrn/rspec-flaky'
+  spec.homepage    = 'https://github.com/RND-SOFT/rspec-flaky'
 
   spec.summary     = 'Gem for catching flaky specs'
   spec.description = 'Gem wraps every runned example to dump pointed database tables to json files'

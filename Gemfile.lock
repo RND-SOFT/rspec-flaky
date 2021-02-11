@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    rspec-flaky (0.0.4)
+      hashdiff (~> 1.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    hashdiff (1.0.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  rspec-flaky!
+
+BUNDLED WITH
+   2.2.3
