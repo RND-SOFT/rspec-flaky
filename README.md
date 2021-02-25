@@ -9,6 +9,7 @@ The most common reason for test flakiness is randomized factories which fill a d
 
 ![image](https://user-images.githubusercontent.com/43433100/106516737-8e72a380-64e8-11eb-9758-34e5cb9f278b.png)
 
+Article about gem: [https://blog.rnds.pro/006-rspecflaky](https://blog.rnds.pro/006-rspecflaky?utm_source=github&utm_medium=article) (in russian)
 
 ## Installation
 
