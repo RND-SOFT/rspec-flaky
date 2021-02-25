@@ -1,3 +1,8 @@
+
+[![Gem Version](https://badge.fury.io/rb/rspec-flaky.svg)](https://rubygems.org/gems/rspec-flaky)
+[![Gem](https://img.shields.io/gem/dt/rspec-flaky.svg)](https://rubygems.org/gems/rspec-flaky/versions)
+[![YARD](https://badgen.net/badge/YARD/doc/blue)](http://www.rubydoc.info/gems/rspec-flaky)
+
 # RSpecFlaky
 
 The most common reason for test flakiness is randomized factories which fill a database before test execution. This small gem is designed to help you find out what exactly attribute values were assigned to an investigated model during a failed and passed execution.
